@@ -1,0 +1,16 @@
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.fls
+*.out
+*.synctex.gz
+*.fdb_latexmk
+
+# *.pdf
+
+.vscode/
+.idea/
+*.swp
+*~

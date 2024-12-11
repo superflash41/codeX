@@ -1,0 +1,129 @@
+% main.tex
+\documentclass[12pt,a4paper]{article}
+
+% Essential packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+% Additional useful packages
+\usepackage{listings}           % For code snippets
+\usepackage{xcolor}            % For colored text and boxes
+\usepackage{tcolorbox}         % For nice looking boxes
+\usepackage{enumitem}          % For better lists
+\usepackage{tikz}              % For drawings and diagrams
+\usepackage{mdframed}          % For framed theorems
+\usepackage{mathtools}         % Enhanced math tools
+\usepackage{tocloft}           % For customizing ToC
+\usepackage{etoolbox}          % For patching commands
+
+% Optional: Set up the directory where your images are stored
+\graphicspath{{images/}}  % This means your images are in an "images" folder
+
+% Document info (to be modified by user)
+\newcommand{\courseTitle}{Course Title}
+\newcommand{\authorName}{Author Name}
+\newcommand{\courseCode}{CODE101}
+\newcommand{\semester}{Fall 2024}
+\newcommand{\noteDate}{\today}
+
+% Custom counters for ToC
+\newcounter{definitioncounter}[section]
+\newcounter{examplecounter}[section]
+\newcounter{listingcounter}[section]
+
+% Custom environments for theorems, definitions, etc. with ToC entries
+\newtheorem{theorem}{Theorem}[section]
+
+\newenvironment{definition}
+{\refstepcounter{definitioncounter}
+\addcontentsline{toc}{subsection}{Definition \thedefinitioncounter}
+\par\medskip\noindent\textbf{Definition \thedefinitioncounter.}}
+{\par\medskip}
+
+\newenvironment{example}
+{\refstepcounter{examplecounter}
+\addcontentsline{toc}{subsection}{Example \theexamplecounter}
+\par\medskip\noindent\textbf{Example \theexamplecounter.}}
+{\par\medskip}
+
+% Make listings appear in ToC
+\makeatletter
+\newcommand{\listingscaption}[1]{%
+  \refstepcounter{listingcounter}%
+  \addcontentsline{toc}{subsection}{Listing \thelistingcounter: #1}%
+  \lstset{caption=#1}%
+}
+\makeatother
+
+% Custom box for important notes
+\newtcolorbox{important}{
+    colback=red!5!white,
+    colframe=red!75!black,
+    title=Important Note
+}
+
+% Header and footer setup
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\courseTitle}
+\lhead{\authorName}
+\rfoot{Page \thepage}
+
+\begin{document}
+
+% Title page
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    {\huge\bfseries \courseTitle\par}
+    \vspace{1cm}
+    {\Large \courseCode, \semester\par}
+    \vspace{2cm}
+    {\Large\itshape Lecture Notes\par}
+    \vspace{3cm}
+    {\Large\bfseries \authorName\par}
+    \vfill
+    {\large \noteDate\par}
+\end{titlepage}
+
+% Table of contents
+\tableofcontents
+\newpage
+
+% Main content starts here
+\section{Introduction}
+Your notes start here...
+
+\begin{important}
+This is an important note that will be highlighted in a red box.
+\end{important}
+
+
+\section{Topic 1}
+Content for topic 1...
+
+\begin{definition}
+This is how you can define important concepts.
+\end{definition}
+
+\begin{example}
+This shows how to present examples clearly.
+\end{example}
+
+\section{Topic 2}
+Content for topic 2...
+
+% Code example
+\begin{lstlisting}[language=Python, caption=Example Code]
+def hello_world():
+    print("Hello, World!")
+\end{lstlisting}
+
+\end{document}
