@@ -41,9 +41,9 @@
 % Custom environments for theorems, definitions, etc. with ToC entries
 \newtheorem{theorem}{Theorem}[section]
 
-\newenvironment{definition}
+\newenvironment{definition}[1]
 {\refstepcounter{definitioncounter}
-\addcontentsline{toc}{subsection}{Definition \thedefinitioncounter}
+\addcontentsline{toc}{subsection}{Definition \thedefinitioncounter. #1}
 \par\medskip\noindent\textbf{Definition \thedefinitioncounter.}}
 {\par\medskip}
 
@@ -63,10 +63,10 @@
 \makeatother
 
 % Custom box for important notes
-\newtcolorbox{important}{
+\newtcolorbox{important}[1]{
     colback=red!5!white,
     colframe=red!75!black,
-    title=Important Note
+    title=\textbf{#1}
 }
 
 % Header and footer setup
@@ -101,15 +101,14 @@
 \section{Introduction}
 Your notes start here...
 
-\begin{important}
+\begin{important}{Important Note}
 This is an important note that will be highlighted in a red box.
 \end{important}
-
 
 \section{Topic 1}
 Content for topic 1...
 
-\begin{definition}
+\begin{definition}{Term to be defined}
 This is how you can define important concepts.
 \end{definition}
 
