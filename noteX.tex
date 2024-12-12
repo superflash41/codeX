@@ -44,7 +44,7 @@
 \newenvironment{definition}[1]
 {\refstepcounter{definitioncounter}
 \addcontentsline{toc}{subsection}{Definition \thedefinitioncounter. #1}
-\par\medskip\noindent\textbf{Definition \thedefinitioncounter.}}
+\par\medskip\noindent\textbf{#1.}}
 {\par\medskip}
 
 \newenvironment{example}
@@ -123,6 +123,9 @@ Content for topic 2...
 \begin{lstlisting}[language=Python, caption=Example Code]
 def hello_world():
     print("Hello, World!")
+    a = 5
+    b = 10
+    print(a + b)
 \end{lstlisting}
 
 \end{document}
